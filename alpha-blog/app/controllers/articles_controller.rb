@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   #before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :set_article,  only: %i[ show edit update destroy ]
+  before_action :require_same_user, except: %i[index show new create]
+  before_action :require_user, only: %i[new create update destroy]
   
   def index
     #@articles = Article.all
@@ -12,20 +14,25 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @categories = Category.all
   end
 
   def edit
+    @categories = Category.all
   end
 
   def create
+    
     # We use 'require' to use just the fields that article needs!
     @article = Article.new(article_params)
     # render plain: @article.inspect
-    @article.user = User.first
+    @article.user = current_user if current_user
+    @article.categories = Category.where(id: params[:article][:category_ids]) if params[:article][:category_ids].present?
+
     if @article.save
       flash[:notice] = "Article was created successfully."
-      redirect_to @article                # => Redirect to article index
-      #redirect_to article_path(@article) # => Redirect to 'show' view
+      #redirect_to @article                # => Redirect to article index
+      redirect_to article_path(@article) # => Redirect to 'show' view
     else
       render 'new'
     end
@@ -53,12 +60,24 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.find(params[:id])
+    begin
+      @article = Article.find(params[:id])
+    rescue 
+      redirect_to articles_path
+    end
+    
   end
 
   def article_params
       # new_implementation => params.expect(article: [ :title, :description ])
-      params.require(:article).permit(:title, :description)
+      params.require(:article).permit(:title, :description, category_ids: [])
     end
+
+  def require_same_user
+    unless current_user && (current_user == @article.user || current_user.admin?)
+      flash[:alert] = "You can only modify your own articles."
+      redirect_to articles_path
+    end
+  end
 
 end

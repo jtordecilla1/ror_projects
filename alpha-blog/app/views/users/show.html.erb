@@ -3,7 +3,10 @@
 <%= gravatar_for @user%>
 
 <div class="text-center mt-4">
+   <%if logged_in? && @user == current_user || current_user.admin? %>
     <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-primary"%>
+    <%= button_to "Delete your profile", user_path(current_user), method: :delete, data: { confirm: "Are you sure?", turbo: false }, class: "btn btn-outline-danger" %>
+   <%end %>
 </div>
 
 <h2 class="text-center">Listing user entries:</h2>

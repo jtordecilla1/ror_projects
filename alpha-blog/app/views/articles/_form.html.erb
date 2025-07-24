@@ -17,9 +17,24 @@
             <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Description of article" %>
           </div>
         </div>
+        
+        <div class="row mb-3">
+            <%= f.label :category_ids, "Categories", class: "col-sm-2 form-label text-light" %>
+            <div class="col-sm-10"> 
+            <div class="form-text text-light">Select categories for this article</div>
+            <div class="row g-3">
+              <% @categories.each do |category| %>
+              <div class="form-check form-check-inline col-auto">
+                <%= check_box_tag "article[category_ids][]", category.id, @article.category_ids.include?(category.id), id: "category_#{category.id}", class: "form-check-input" %>
+                <%= label_tag "category_#{category.id}", category.name, class: "form-check-label text-light" %>
+              </div>
+              <% end %>
+            </div>
+            </div>
 
         <div class="row justify-content-center mt-4">
           <%= f.submit class: "btn btn-outline-light btn-lg" %>
+        </div>
         </div>
       <% end %>
     </div>

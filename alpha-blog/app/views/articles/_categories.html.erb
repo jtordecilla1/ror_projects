@@ -1,0 +1,12 @@
+<div class="mb-3">
+    <span class="text-muted">Categories:</span>
+    <% if article.categories.any? %>
+        <% article.categories.each do |category| %>
+            <span class="badge bg-light text-muted border me-1">
+                <%= link_to category.name, category_path(category), class: "text-decoration-none text-muted" %>
+            </span>
+        <% end %>
+    <% else %>
+        <span class="badge bg-light text-muted border me-1">No categories</span>
+    <% end %>
+</div>

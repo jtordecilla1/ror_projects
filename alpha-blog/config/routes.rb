@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   # delete method doesnt works! it says: No route matches [GET] "/logout"
   get 'logout', to: 'sessions#destroy'
-
+  resources :categories, except: [:destroy]
 end

@@ -18,7 +18,9 @@
             </p>
             <div class="d-flex justify-content-center gap-2">
               <%= link_to "View profile", user_path(user), class:"btn btn-outline-primary btn-sm px-3" %>
-              <%= link_to "Edit profile", edit_user_path(user), class:"btn btn-outline-secondary btn-sm px-3" %>
+               <% if logged_in? && (user == current_user || (current_user&.admin?)) %>
+                <%= link_to "Edit profile", edit_user_path(user), class:"btn btn-outline-secondary btn-sm px-3" %>
+               <% end %>
             </div>
           </div>
         </div>
