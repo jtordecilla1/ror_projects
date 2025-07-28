@@ -1,0 +1,58 @@
+
+#index {
+    color: red;
+}
+
+.text-white {
+    color: white!important;
+}
+
+.text-black {
+    color: black!important;
+}
+
+.chatbox{
+    height: 60vh;
+}
+
+.section-header{
+    text-align: center;
+    margin: 2rem;
+}
+
+.header-button{
+    color: white;
+}
+
+.chatbox{
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-header{
+    text-align: center;
+    margin: 2rem;
+}
+
+.header-button{
+    color: white;
+}
+
+#messages {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#message-container {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 100%;
+    padding: 1rem;
+}
+
+.extra.content {
+    flex-shrink: 0;
+}

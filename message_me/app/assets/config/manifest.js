@@ -1,0 +1,9 @@
+//= link_tree ../images
+//= link_directory ../stylesheets .css
+//= link_directory ../stylesheets .scss
+//= link application.scss
+//= link application.js
+//= link_tree ../../../app/javascript/controllers .js
+//= link channels/index.js
+//= link channels/consumer.js
+//= link channels/chatroom_channel.js

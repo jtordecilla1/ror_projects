@@ -1,0 +1,10 @@
+<div class="ui container">
+    <% flash.each do |name, msg| %>
+        <div class="ui message <%= name == 'notice' ? 'positive' : 'negative' %>">
+            <i class="close icon" data-bs-dismiss="alert"></i>
+            <div class="header">
+                <%= msg %>
+            </div>
+        </div>
+    <% end %>
+</div>
