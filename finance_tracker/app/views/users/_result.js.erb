@@ -1,0 +1,21 @@
+<%# app/views/users/_result.js.erb %>
+<% if @stock %>
+  document.querySelector('#results').innerHTML = `
+    <div class="card mt-3">
+      <div class="card-body">
+        <h5 class="card-title"><%= @stock[:ticker] %></h5>
+        <p class="card-text">
+          <strong>Name:</strong> <%= @stock[:name] %><br>
+          <strong>Price:</strong> $<%= @stock[:last_price] %>
+        </p>
+        <button class="btn btn-primary">Add to Portfolio</button>
+      </div>
+    </div>
+  `;
+<% else %>
+  document.querySelector('#results').innerHTML = `
+    <div class="alert alert-danger">
+      Stock not found. Please check the ticker symbol.
+    </div>
+  `;
+<% end %>

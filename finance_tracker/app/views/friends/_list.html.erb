@@ -1,0 +1,32 @@
+<%# app/views/friends/_list.html.erb %>
+<div class="row">
+  <div class="col-9">
+    <table class="table table-hover table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Email</th>
+          <th scope="col">Name</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @friends.each do |friend| %>
+          <tr>
+            <td><%= friend.email %></td>
+            <td><%= friend.full_name %></td>
+            <td class="d-flex justify-content-center gap-3">
+              <%= button_to 'Remove Friend', remove_friend_path, 
+                  method: :delete,
+                  params: { friend_id: friend.id },
+                  class: "btn btn-danger btn-sm",
+                  data: { 
+                    confirm: "Are you sure you want to remove #{friend.full_name} from your friends?" 
+                  } %>
+              <%= link_to 'View Profile', user_profile_path(friend), class: "btn btn-info btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

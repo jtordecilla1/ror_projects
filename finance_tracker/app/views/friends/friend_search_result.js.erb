@@ -1,0 +1,35 @@
+<%# app/views/friends/friend_search_result.js.erb %>
+<% if @friend %>
+  document.querySelector('#friend-results').innerHTML = `
+    <div class="card mt-3 mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><%= @friend.full_name %></h5>
+        <p class="card-text">
+          <strong>Email:</strong> <%= @friend.email %>
+        </p>
+        <div class="btn-group" role="group">
+          <a href="/users/<%= @friend.id %>" class="btn btn-info btn-sm">View Profile</a>
+          <% if @error_message %>
+            <span class="badge bg-warning ms-2"><%= @error_message %></span>
+          <% else %>
+            <form action="/add_friend" method="post" style="display: inline;">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="friend_id" value="<%= @friend.id %>">
+              <button type="submit" class="btn btn-primary btn-sm">Add Friend</button>
+            </form>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  `;
+<% else %>
+  document.querySelector('#friend-results').innerHTML = `
+    <div class="alert alert-danger">
+      <% if @error_message %>
+        <%= @error_message %>
+      <% else %>
+        No user found with that name. Please check the spelling.
+      <% end %>
+    </div>
+  `;
+<% end %>

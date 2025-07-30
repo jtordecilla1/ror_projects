@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <%= link_to "Finance Tracker", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+
+        <li class="nav-item">
+          <%= link_to 'My Portfolio', my_portfolio_path, class: "nav-link#{' active' if request.path == my_portfolio_path}", data: { turbo: false } %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to 'My Friends', my_friends_path, class: "nav-link#{' active' if request.path == my_friends_path}", data: { turbo: false } %>
+        </li>
+
+        <li class="nav-item d-flex align-items-center">
+          🚹
+          <%= user_signed_in? ? current_user.full_name : 'Anonymous' %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Account
+          </a>
+            <ul class="dropdown-menu">
+            <% if user_signed_in? %>
+              <li>
+              <%= link_to 'Profile', edit_user_registration_path, class: 'dropdown-item', data: { turbo: false } %>
+              </li>
+              <li>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item bg-danger', data: { turbo: false } %>
+              </li>
+            <% else %>
+              <li>
+              <%= link_to 'Login', new_user_session_path, class: 'dropdown-item', data: { turbo: false } %>
+              </li>
+              <li>
+              <%= link_to 'Sign Up', new_user_registration_path, class: 'dropdown-item', data: { turbo: false } %>
+              </li>
+            <% end %>
+            </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
