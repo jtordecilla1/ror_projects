@@ -1,0 +1,42 @@
+<%# app/views/layouts/_sidebar.html.erb %>
+<div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+  <div class="position-sticky pt-3">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <%= link_to root_path, class: "nav-link #{'active' if current_page?(root_path)}" do %>
+          <i class="fas fa-home"></i>
+          Dashboard
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "#", class: "nav-link" do %>
+          <i class="fas fa-images"></i>
+          My Photos
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "#", class: "nav-link" do %>
+          <i class="fas fa-upload"></i>
+          Upload Photo
+        <% end %>
+      </li>
+    </ul>
+    
+    <hr>
+    
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <%= link_to "#", class: "nav-link" do %>
+          <i class="fas fa-cog"></i>
+          Settings
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-danger" do %>
+          <i class="fas fa-sign-out-alt"></i>
+          Sign Out
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
