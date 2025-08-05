@@ -7,36 +7,53 @@
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= yield :head %>
-
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-
-
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "https://js.stripe.com/v2/" %>
+    
   </head>
-
   <body>
-    <%= render "layouts/navigation" %>
-    <div class="container w-">
-      <div class="row">
-        <div class="col">
-          <%= yield %>
+    <%= render 'layouts/navigation' %>
+    <!-- Full width for welcome page, container for others -->
+    <% if current_page?(root_path) && !user_signed_in? %>
+      <main>
+      <% else %>
+        <div class="container-fluid">
+          <div class="row">
+            <% if user_signed_in? %>
+              <%= render 'layouts/sidebar' %>
+              <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+              <% else %>
+                <main class="col-12">
+                <% end %>
+              <% end %>
+              <!-- Flash messages -->
+              <% flash.each do |type, message| %>
+                <div class="alert alert-<%= type == 'notice' ? 'success' : 'danger' %> alert-dismissible fade show mt-3" role="alert">
+                  <%= message %>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+              <% end %>
+              <%= yield %>
+              <% if current_page?(root_path) && !user_signed_in? %>
+              </main>
+            <% else %>
+            </main>
+          </div>
         </div>
-        <div class="col">
-          <%= render "layouts/sidebar" %>
-        </div>
-
-      </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-  </body>
-</html>
+      <% end %>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    </body>
+  </html>

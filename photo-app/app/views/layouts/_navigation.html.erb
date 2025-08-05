@@ -16,10 +16,10 @@
           <%= link_to "Home", root_path, class: "nav-link #{'active' if current_page?(root_path)}" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Gallery", "#", class: "nav-link" %>
+          <%= link_to "Gallery", images_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Upload", "#", class: "nav-link" %>
+          <%= link_to "Upload", new_image_path, class: "nav-link" %>
         </li>
       </ul>
       

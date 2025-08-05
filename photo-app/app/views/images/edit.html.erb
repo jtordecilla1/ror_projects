@@ -1,0 +1,15 @@
+<%# app/views/images/edit.html.erb %>
+<div class="container py-4">
+  <div class="card shadow">
+    <div class="card-header">
+      <h2>Editing Image</h2>
+    </div>
+    <div class="card-body">
+      <%= render "form", image: @image %>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+      <%= link_to "Show this image", @image, class: "btn btn-outline-primary" %>
+      <%= link_to "Back to images", images_path, class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+</div>

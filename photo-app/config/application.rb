@@ -23,5 +23,6 @@ module PhotoApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+     config.autoload_paths += %W(#{config.root}/app/uploaders)
   end
 end

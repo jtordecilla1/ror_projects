@@ -1,0 +1,14 @@
+<%# app/views/images/new.html.erb %>
+<div class="container py-4">
+  <div class="card shadow">
+    <div class="card-header">
+      <h2>New Image</h2>
+    </div>
+    <div class="card-body">
+      <%= render "form", image: @image %>
+    </div>
+    <div class="card-footer">
+      <%= link_to "Back to images", images_path, class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<%# app/views/images/_form.html.erb %>
+<%= form_with(model: image, class: "mb-4") do |form| %>
+  <% if image.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h4>
+      <ul>
+        <% image.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :picture, class: "form-label" %>
+    <%= form.file_field :picture, class: "form-control" %>
+  </div>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $("#image_picture").bind("change", function() {
+    var size_in_mb = this.files[0].size / 1024 / 1024;
+    if (size_in_mb > 5) {
+      alert("File size should be less than 5MB.");
+      $(this).val("");
+    }
+  });
+
+</script>

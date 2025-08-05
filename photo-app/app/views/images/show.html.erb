@@ -1,0 +1,29 @@
+<%# app/views/images/show.html.erb %>
+<div class="container py-4">
+  <div class="card shadow">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h2><%= @image.name %></h2>
+      <div>
+        <%= link_to "Edit", edit_image_path(@image), class: "btn btn-sm btn-outline-primary" %>
+        <%= link_to "Back", images_path, class: "btn btn-sm btn-outline-secondary" %>
+      </div>
+    </div>
+    
+    <div class="card-body">
+      <% if @image.picture.present? %>
+        <div class="text-center mb-4">
+          <%= image_tag @image.picture.url, class: "img-fluid rounded", alt: @image.name %>
+        </div>
+      <% end %>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <p><strong>Uploaded by:</strong> <%= @image.user.email %></p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p><strong>Created:</strong> <%= @image.created_at.strftime("%B %d, %Y") %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

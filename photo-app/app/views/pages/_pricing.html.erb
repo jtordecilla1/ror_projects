@@ -1,0 +1,60 @@
+<div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h2 class="text-center mb-5">Choose Your Plan</h2>
+        <div class="row g-4">
+          <!-- Premium Plan -->
+          <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-primary">
+              <div class="card-header bg-primary text-white text-center">
+                <h3 class="card-title mb-0">Premium Plan</h3>
+                <div class="display-6 fw-bold mt-2">$10<small class="fs-6">/month</small></div>
+              </div>
+              <div class="card-body">
+                <ul class="list-unstyled features">
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited Image Uploads</li>
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Responsive Design</li>
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Access Anywhere</li>
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 Support</li>
+                </ul>
+              </div>
+              <div class="card-footer text-center">
+                <%= link_to 'Choose Premium', new_user_registration_path, 
+                    class: 'btn btn-primary btn-lg w-100' %>
+              </div>
+            </div>
+          </div>
+
+          <!-- Amaze Plan -->
+          <div class="col-md-6">
+            <div class="card h-100 shadow border-warning position-relative">
+              <!-- Popular badge -->
+              <div class="position-absolute top-0 start-50 translate-middle">
+                <span class="badge bg-warning text-dark px-3 py-2">Most Popular</span>
+              </div>
+              
+              <div class="card-header bg-warning text-dark text-center">
+                <h3 class="card-title mb-0">Amaze Plan</h3>
+                <div class="display-6 fw-bold mt-2">$20<small class="fs-6">/month</small></div>
+              </div>
+              <div class="card-body">
+                <ul class="list-unstyled features">
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited Image Uploads</li>
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Responsive Design</li>
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Access Anywhere</li>
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 Support</li>
+                  <li class="mb-2 extra"><i class="fas fa-star text-warning me-2"></i><strong>Unlimited Projects</strong></li>
+                  <li class="mb-2 extra"><i class="fas fa-star text-warning me-2"></i><strong>Priority Support</strong></li>
+                  <li class="mb-2 extra"><i class="fas fa-star text-warning me-2"></i><strong>Advanced Analytics</strong></li>
+                </ul>
+              </div>
+              <div class="card-footer text-center">
+                <%= link_to 'Choose Amaze', new_user_registration_path, 
+                    class: 'btn btn-warning btn-lg w-100 text-dark fw-bold' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
