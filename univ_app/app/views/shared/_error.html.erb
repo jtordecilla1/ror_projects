@@ -1,0 +1,15 @@
+<% if obj.errors.any? %>
+  <div class="card-panel red lighten-4 fade-out-target">
+    <h5 class="red-text text-darken-2">
+      The following errors prevented the <%= obj.class.to_s.downcase %> from being saved
+    </h5>
+    <ul class="collection">
+      <% obj.errors.full_messages.each do |msg| %>
+        <li class="collection-item red-text text-darken-1"><%= msg %></li>
+      <% end %>
+    </ul>
+    <button class="btn-flat waves-effect waves-red right" onclick="this.parentElement.remove();">
+      <i class="material-icons">close</i>
+    </button>
+  </div>
+<% end %>

@@ -1,0 +1,71 @@
+<nav>
+  <div class="nav-wrapper container">
+    <%= link_to "Tech University", root_path, class: "brand-logo" %>
+    <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul id="nav-desktop" class="right hide-on-med-and-down">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "About", about_path %></li>
+
+      <li><%= link_to "New Course", new_course_path %></li>
+      
+      <!-- Students Dropdown Trigger -->
+      <li>
+        <a class='dropdown-trigger' href='#a' data-target='students-dropdown'>
+          Students
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>      
+      
+      <!-- Account Dropdown Trigger -->
+      <li>
+        <a class='dropdown-trigger' href='#' data-target='dropdown1'>
+          Account
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Students Dropdown Structure -->
+<ul id='students-dropdown' class='dropdown-content'>
+  <li><%= link_to "All Students", students_path %></li>
+  <li><%= link_to "Register New Student", new_student_path %></li>
+  <% if false # Add condition for admin users %>
+    <li class="divider" tabindex="-1"></li>
+    <li><%= link_to "Manage Students", "#" %></li>
+  <% end %>
+</ul>
+
+<!-- Account Dropdown Structure -->
+<ul id='dropdown1' class='dropdown-content'>
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider" tabindex="-1"></li>
+  <li><a href="#!">three</a></li>
+  <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+  <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+</ul>
+
+<!-- Mobile Sidenav -->
+<ul class="sidenav" id="mobile-nav">
+  <li><%= link_to "Home", root_path %></li>
+  <li><%= link_to "About", about_path %></li>
+  
+  <!-- Students Section -->
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Students</a></li>
+  <li><%= link_to "All Students", students_path %></li>
+  <li><%= link_to "Register New Student", new_student_path %></li>
+  
+  <!-- Course Section -->
+  <li><div class="divider"></div></li>
+  <li><%= link_to "New Course", new_course_path %></li>
+  
+  <!-- Account Section -->
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Account</a></li>
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li><a href="#!">three</a></li>
+</ul>

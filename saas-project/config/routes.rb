@@ -25,7 +25,8 @@ Rails.application.routes.draw do
     :sessions => "milia/sessions", 
     :passwords => "milia/passwords", 
   }
-  
+
+  # Match allows to specify the HTTP methods that are allowed for the route
   match '/plan/edit' => 'tenants#edit', via: :get, as: :edit_plan
   match '/plan/update' => 'tenants#update', via: [:put, :patch], as: :update_plan
 

@@ -1,0 +1,12 @@
+<div class="container fade-out-target">
+  <% flash.each do |name, msg| %>
+    <div class="card-panel <%= name == 'notice' ? 'teal lighten-4' : 'red lighten-4' %>">
+      <span class="<%= name == 'notice' ? 'teal-text text-darken-4' : 'red-text text-darken-4' %>">
+        <%= msg %>
+      </span>
+      <button class="btn-flat waves-effect waves-light right" onclick="this.parentElement.remove();">
+        <i class="material-icons">close</i>
+      </button>
+    </div>
+  <% end %>
+</div>
