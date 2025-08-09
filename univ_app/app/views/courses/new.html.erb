@@ -1,1 +1,25 @@
 <h1>Create a New Course</h1>
+
+<%= render 'shared/error', obj: @course %>
+
+<%= form_with model: @course, url: courses_path, local: true do |form| %>
+
+  <div class="input-field">
+    <%= form.label :short_name %>
+    <%= form.text_field :short_name, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'materialize-textarea' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.submit "Create Course", class: "btn waves-effect waves-light" %>
+  </div>
+<% end %>

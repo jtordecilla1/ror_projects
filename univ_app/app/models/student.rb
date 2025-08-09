@@ -4,4 +4,6 @@ class Student < ApplicationRecord
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, :uniqueness => true
 
   has_secure_password
+  has_many :student_courses
+  has_many :courses, through: :student_courses
 end

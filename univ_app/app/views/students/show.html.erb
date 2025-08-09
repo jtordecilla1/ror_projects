@@ -4,12 +4,29 @@
   <div class="card-content white-text">
     <span class="card-title"><%= @student.name %></span>
     <p><i class="material-icons tiny">email</i> <%= @student.email %></p>
-    <div>
-      <p>Current enrollments: None </p>
+    
+    <div class="section">
+      <h5>Current enrollments: <%= @courses.any? ? @courses.count : "None" %></h5>
       
+      <% if @courses.any? %>
+        <div class="row">
+          <% @courses.each do |course| %>
+            <div class="col s12 m6 l8">
+              <div class="chip teal white-text">
+                <span class="badge new white-text" data-badge-caption="<%= course.short_name %>"></span>
+                <%= link_to course.name, course_path(course), class: "white-text" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="chip red lighten-2 white-text">Not enrolled in any courses yet</div>
+      <% end %>
     </div>
   </div>
+  
   <div class="card-action">
-    <%= link_to "Edit", edit_student_path(@student) %>
-    <%= link_to "Back to Directory", students_path %>
+    <%= link_to "Edit", edit_student_path(@student), class: "btn-flat waves-effect waves-light white-text" %>
+    <%= link_to "Back to Directory", students_path, class: "btn-flat waves-effect waves-light white-text" %>
   </div>
+</div>

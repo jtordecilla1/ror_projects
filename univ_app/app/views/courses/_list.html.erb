@@ -6,8 +6,8 @@
         <span class="card-title"><%= course.short_name %> - <%= course.name %></span>
         <p><%= course.description %></p>
       </div>
-      <div class="card-action">
-        <a href="#">Enroll</a>
+      <div class="card-action" style="display: flex; gap: 1rem; align-items: center;">
+        <%= button_to "Enroll", student_courses_path(course_id: course.id), method: :post, class: "btn-flat waves-effect waves-light white-text", form: { style: "margin: 0;" } %>
         <a href="#">More Info</a>
       </div>
     </div>

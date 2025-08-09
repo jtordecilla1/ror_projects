@@ -1,6 +1,8 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update]
-
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update]
+  skip_before_action :require_user, only: [:new, :create]
   def index
     @students = Student.all 
   end
@@ -10,6 +12,7 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @courses = @student.courses
   end
 
   def create
